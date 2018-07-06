@@ -98,4 +98,5 @@ def saveImg(imgSrc):
             f.close()
 ```
 
-> 源码见src与标题同名notebook/python/src/No.3 selenium.py
+> 源码见src与标题同名
+https://github.com/shutter-cp/notebook/blob/master/python/src/No.3%20%20selenium.py
