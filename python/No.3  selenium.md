@@ -1,5 +1,5 @@
 
-
+# No.3  selenium
 
 ### 备注：调用的包
 ```
@@ -73,4 +73,29 @@ wait.until(
 html = driver.page_source //拿到页面
 doc = pq(html)
 ```
-9.PyQuery解析
+### 9.PyQuery解析
+```
+items = doc('.feedBox .sections .articleCard').items() //此处的class不用从头写，且因为这个class里面是多个重复的所以用items来取得集合
+    for item in items:
+        src = 'https://www.toutiao.com/'+\
+              item.find('.title-box .link').attr('href')//在单个的item里面查询到.title-box .link这个div 然后通过attr获取到href的值
+```
+
+### 10.通过url将图片下载
+```
+·······
+imgSrc = item.find('.image-item-inner .image-origin').attr('href')
+saveImg(requests.get(imgSrc,headers = headers).content)//requests中的方法
+```
+
+### 11.保存图片
+```
+def saveImg(imgSrc):
+    filePath = '{0}/{1}.{2}'.format('M:\img',md5(imgSrc).hexdigest(),'jpg')
+    if not os.path.exists(filePath):
+        with open(filePath,'wb') as f:
+            f.write(imgSrc)
+            f.close()
+```
+
+> 源码见src与标题同名
